@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tsunageru AI｜伝えたいのに、伝わらない。その消耗、終わりにしませんか。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --cream-dark: #F2EDE4;
+    --warm-white: #FFFDF9;
+    --sage: #5A8A62;
+    --sage-light: #8FBA94;
+    --sage-pale: #E8F4EC;
+    --sage-deep: #2D5A3D;
+    --brown-pale: #F0EAE2;
+    --text-dark: #2A2420;
+    --text-mid: #6A5E55;
+    --text-light: #A89D94;
+    --ivory: #FFFEF9;
+    --green-grad-start: #2A4A35;
+    --green-grad-end: #3D6B4A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.9;
+    overflow-x: hidden;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== ヒーロー ===== */
+  .hero {
+    background: linear-gradient(160deg, #E8F2E8 0%, #D4EAD8 50%, #C5E0CB 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 32px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--sage);
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(26px, 7vw, 38px);
+    font-weight: 300;
+    color: var(--sage-deep);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--sage);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 2;
+    margin-bottom: 40px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-cta {
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .btn-line {
+    display: block;
+    background: #06C755;
+    color: white;
+    text-align: center;
+    padding: 18px 24px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 24px rgba(6,199,85,0.3);
+    transition: all 0.3s ease;
+    margin-bottom: 12px;
+  }
+
+  .btn-line:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(6,199,85,0.35); }
+
+  .hero-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  /* ===== セクション共通 ===== */
+  .section {
+    padding: 56px 28px;
+    background: white;
+    margin: 2px 0;
+  }
+
+  .section.gray { background: #F8F5F0; }
+  .section.green-pale { background: var(--sage-pale); }
+  .section.dark {
+    background: linear-gradient(160deg, var(--green-grad-start) 0%, var(--green-grad-end) 100%);
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+
+  .section.dark .section-eyebrow { color: #C5E8C0; }
+
+  .h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(20px, 5vw, 26px);
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .section.dark .h2 { color: white; }
+
+  .body-text {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 2;
+    margin-bottom: 16px;
+  }
+
+  .section.dark .body-text { color: rgba(255,255,255,0.8); }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(140,123,107,0.12);
+    margin: 20px 0;
+  }
+
+  /* ===== 痛みカード ===== */
+  .pain-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+  .pain-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 22px;
+    border-left: 3px solid var(--sage-light);
+    border-top: 1px solid rgba(140,123,107,0.08);
+    border-right: 1px solid rgba(140,123,107,0.08);
+    border-bottom: 1px solid rgba(140,123,107,0.08);
+  }
+
+  .pain-text {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  .pain-text strong {
+    color: var(--text-dark);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+
+  .pain-close {
+    background: var(--sage-pale);
+    border-radius: 14px;
+    padding: 18px 22px;
+    text-align: center;
+  }
+
+  .pain-close-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--sage-deep);
+    line-height: 1.9;
+  }
+
+  /* ===== 原因セクション ===== */
+  .cause-box {
+    background: var(--sage-deep);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 16px 0;
+  }
+
+  .cause-title {
+    font-size: 13px;
+    color: #C5E8C0;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .cause-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 2;
+  }
+
+  .word-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0;
+  }
+
+  .word-tag {
+    background: rgba(196,132,90,0.12);
+    border: 1px solid rgba(196,132,90,0.25);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: #8B5E3C;
+  }
+
+  .point-box {
+    background: var(--sage-pale);
+    border-radius: 14px;
+    padding: 18px 22px;
+    border-left: 3px solid var(--sage);
+    margin: 16px 0;
+  }
+
+  .point-text {
+    font-size: 15px;
+    color: var(--sage-deep);
+    line-height: 1.9;
+    font-weight: 400;
+  }
+
+  /* ===== 開発者の想い ===== */
+  .story-card {
+    background: white;
+    border-radius: 16px;
+    padding: 22px 24px;
+    border: 1px solid rgba(140,123,107,0.1);
+    margin: 16px 0;
+  }
+
+  .story-text {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 2;
+    margin-bottom: 14px;
+  }
+
+  .story-author {
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: right;
+    border-top: 1px solid rgba(140,123,107,0.1);
+    padding-top: 12px;
+    margin-top: 8px;
+  }
+
+  /* ===== アプリ機能 ===== */
+  .feature-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .feature-item {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 22px;
+    border: 1px solid rgba(140,123,107,0.1);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .feature-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #E8F4EC, #D0EAD8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .feature-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  .feature-body {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  /* ===== 3ステップモックUI ===== */
+  .mock-wrap {
+    background: linear-gradient(160deg, #2A4A35 0%, #3D6B4A 100%);
+    border-radius: 24px;
+    padding: 28px 22px;
+    margin: 20px 0;
+    box-shadow: 0 8px 40px rgba(45,90,61,0.3);
+  }
+
+  .mock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .mock-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    color: #C5E8C0;
+    letter-spacing: 0.15em;
+  }
+
+  .mock-time {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(197,232,192,0.2);
+    border: 1px solid rgba(197,232,192,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #C5E8C0;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .step-bubble {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.7;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .step-bubble.result {
+    background: rgba(197,232,192,0.15);
+    border-color: rgba(197,232,192,0.25);
+  }
+
+  .step-ai-label {
+    font-size: 11px;
+    color: #C5E8C0;
+    margin-bottom: 6px;
+  }
+
+  .step-insight {
+    margin-top: 8px;
+    background: rgba(197,232,192,0.12);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #C5E8C0;
+    line-height: 1.7;
+    border-left: 2px solid #C5E8C0;
+  }
+
+  .step-arrow {
+    text-align: center;
+    color: rgba(197,232,192,0.6);
+    font-size: 18px;
+    margin: 6px 0;
+  }
+
+  .step-copy-btn {
+    margin-top: 12px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    letter-spacing: 0.05em;
+  }
+
+  .mock-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  .steps-label {
+    text-align: center;
+    font-size: 13px;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== Before/After ===== */
+  .ba-wrap {
+    background: #F8F5F0;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+
+  .ba-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .ba-label.after { color: var(--sage); }
+
+  .ba-bubble {
+    background: white;
+    border-radius: 4px 14px 14px 14px;
+    padding: 12px 16px;
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.8;
+    border: 1px solid rgba(140,123,107,0.1);
+    width: 100%;
+    display: block;
+  }
+
+  .ba-bubble.after {
+    border-color: rgba(90,138,98,0.25);
+    background: #F5FDF7;
+    border-radius: 14px 14px 14px 4px;
+  }
+
+  .ba-arrow {
+    text-align: center;
+    color: var(--sage-light);
+    font-size: 20px;
+    margin: 8px 0;
+  }
+
+  .ba-insight {
+    margin-top: 10px;
+    background: var(--sage-pale);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--sage-deep);
+    line-height: 1.8;
+    border-left: 2px solid var(--sage-light);
+  }
+
+  /* ===== 約束 ===== */
+  .promise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .promise-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .promise-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #C5E8C0;
+    flex-shrink: 0;
+  }
+
+  .promise-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    background: linear-gradient(160deg, var(--green-grad-start) 0%, var(--green-grad-end) 100%);
+    padding: 56px 28px;
+    text-align: center;
+  }
+
+  .cta-leaf { font-size: 40px; margin-bottom: 20px; }
+
+  .cta-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 300;
+    color: white;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .cta-title em {
+    font-style: normal;
+    color: #C5E8C0;
+  }
+
+  .cta-body {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 2;
+    margin-bottom: 32px;
+  }
+
+  .cta-gift-box {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,0.15);
+    text-align: left;
+  }
+
+  .cta-gift-title {
+    font-size: 13px;
+    color: #C5E8C0;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .cta-gift-text {
+    font-size: 16px;
+    color: white;
+    line-height: 1.8;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+  }
+
+  .footer-brand {
+    background: #F0F8F2;
+    padding: 28px;
+    text-align: center;
+  }
+
+  .footer-brand-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    color: var(--sage-deep);
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  /* アニメーション */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <!-- 葉っぱ装飾 -->
+  <div style="position:absolute; top:20px; right:20px; opacity:0.35; z-index:0;">
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 10 C80 10, 110 30, 110 60 C110 90, 80 110, 60 110 C40 110, 10 90, 10 60 C10 30, 40 10, 60 10Z" fill="#7AB87E" opacity="0.3"/>
+      <path d="M60 10 C60 10, 60 60, 60 110" stroke="#5A8A62" stroke-width="1.5" opacity="0.5"/>
+      <path d="M60 30 C60 30, 85 45, 100 60" stroke="#5A8A62" stroke-width="1" opacity="0.4"/>
+      <path d="M60 50 C60 50, 80 58, 90 70" stroke="#5A8A62" stroke-width="1" opacity="0.4"/>
+      <path d="M60 30 C60 30, 35 45, 20 60" stroke="#5A8A62" stroke-width="1" opacity="0.4"/>
+      <path d="M60 50 C60 50, 40 58, 30 70" stroke="#5A8A62" stroke-width="1" opacity="0.4"/>
+    </svg>
+  </div>
+  <div style="position:absolute; bottom:30px; left:10px; opacity:0.2; z-index:0; transform:rotate(-20deg);">
+    <svg width="80" height="80" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 10 C80 10, 110 30, 110 60 C110 90, 80 110, 60 110 C40 110, 10 90, 10 60 C10 30, 40 10, 60 10Z" fill="#5A8A62" opacity="0.4"/>
+      <path d="M60 10 C60 10, 60 60, 60 110" stroke="#3D6B4A" stroke-width="1.5" opacity="0.6"/>
+    </svg>
+  </div>
+  <div style="position:absolute; top:50%; right:-10px; opacity:0.15; z-index:0; transform:rotate(30deg);">
+    <svg width="60" height="60" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 10 C80 10, 110 30, 110 60 C110 90, 80 110, 60 110 C40 110, 10 90, 10 60 C10 30, 40 10, 60 10Z" fill="#5A8A62"/>
+      <path d="M60 10 C60 10, 60 60, 60 110" stroke="#3D6B4A" stroke-width="2"/>
+    </svg>
+  </div>
+  <p class="hero-eyebrow" style="color: var(--sage);">tsunageru AI — 開発中</p>
+  <h1 class="hero-title">
+    伝えたいのに、<br>伝わらない。<br>
+    <em>その消耗、<br>終わりにしませんか。</em>
+  </h1>
+  <p class="hero-sub">
+    夫婦のLINEをAIがそっと整える<br>
+    「tsunageru AI」開発中🌙
+  </p>
+  <div class="hero-cta">
+    <a href="https://lin.ee/xPtcPah" class="btn-line">
+      🎁 無料小冊子を受け取る
+    </a>
+    <p class="hero-note">LINE登録・無料・いつでも解除できます</p>
+  </div>
+</section>
+
+<!-- 痛み -->
+<section class="section gray fade-in">
+  <p class="section-eyebrow">あなただけじゃない</p>
+  <h2 class="h2">こんな経験、<br>ありませんか？</h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <p class="pain-text">
+        <strong>「しんどいことを伝えたら逃げてると言われた」</strong>
+        話すと責められるように感じる。
+      </p>
+    </div>
+    <div class="pain-card">
+      <p class="pain-text">
+        <strong>「感謝の気持ちが届かない」</strong>
+        現状を理解してもらえない。
+      </p>
+    </div>
+    <div class="pain-card">
+      <p class="pain-text">
+        <strong>「ただいまって帰ってきても<br>スマホから目を離さない」</strong>
+        話しかけても、上の空。
+      </p>
+    </div>
+    <div class="pain-card">
+      <p class="pain-text">
+        <strong>「また喧嘩になった」</strong>
+        なんで毎回こうなるんだろう。
+      </p>
+    </div>
+  </div>
+  <div class="pain-close">
+    <p class="pain-close-text">
+      責めたいわけじゃない。<br>
+      ただ、分かってほしかっただけ。
+    </p>
+  </div>
+</section>
+
+<!-- 原因 -->
+<section class="section fade-in">
+  <p class="section-eyebrow">なぜ伝わらないのか</p>
+  <h2 class="h2">「伝わらない」のは<br>あなたのせいじゃない。</h2>
+  <p class="body-text">人は批判されると、心を閉じます。この言葉が入った瞬間、相手は防御モードに入ります。</p>
+  <div class="word-tags">
+    <span class="word-tag">なんで〜</span>
+    <span class="word-tag">また〜</span>
+    <span class="word-tag">いつも〜</span>
+    <span class="word-tag">毎回〜</span>
+    <span class="word-tag">ちゃんと〜</span>
+    <span class="word-tag">じゃん</span>
+  </div>
+  <p class="body-text">内容がどれだけ正しくても、心が閉じた状態では届きません。</p>
+  <div class="point-box">
+    <p class="point-text">
+      伝わらないのは「気持ち」の問題じゃない。<br>
+      「届く形」になっていないだけ。
+    </p>
+  </div>
+</section>
+
+<!-- 開発者の想い -->
+<section class="section gray fade-in">
+  <p class="section-eyebrow">なぜ作ろうと思ったか</p>
+  <h2 class="h2">だから、tsunageru AIを<br>作りました。</h2>
+  <div class="story-card">
+    <p class="story-text">
+      2週間前、夫に腹が立ちすぎて眠れない夜がありました。
+    </p>
+    <p class="story-text">
+      子供のタオルをめぐる、くだらないけど本気で腹が立つ喧嘩。「なんでこんな言い方しかできないの」そう思いながらLINEを打って、消して。
+    </p>
+    <p class="story-text">
+      AIに相談して、伝わる言葉に整えたら夫は謝ってくれました。
+    </p>
+    <p class="story-text" style="color: var(--sage-deep); font-weight: 400;">
+      「ちゃんと伝わった」<br>それだけで、こんなに楽になれた。
+    </p>
+    <p class="story-text">
+      同じ思いをしている人に届けたくて、作っています。
+    </p>
+    <p class="story-author">— 高橋わこ</p>
+  </div>
+</section>
+
+<!-- 機能紹介 -->
+<section class="section fade-in">
+  <p class="section-eyebrow">tsunageru AIでできること</p>
+  <h2 class="h2">3つの機能で<br>伝わらないをなくす。</h2>
+  <div class="feature-list">
+    <div class="feature-item">
+      <div class="feature-icon">📩</div>
+      <div>
+        <p class="feature-title">LINE翻訳</p>
+        <p class="feature-body">送りたい気持ちを入力するだけ。5秒で届く言葉に変わります。やわらか翻訳・本音翻訳の2案を提案。</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">📸</div>
+      <div>
+        <p class="feature-title">スクショ解析→返信提案</p>
+        <p class="feature-body">相手のLINEのスクショを貼るだけ。会話の空気を読んで、返信文を自動で提案します。</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🫧</div>
+      <div>
+        <p class="feature-title">感情整理チャット</p>
+        <p class="feature-body">正論も、説教もしません。ただ、そばにいます。深夜でも、一人じゃない。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- アプリ画面モックUI -->
+  <div style="margin-top: 32px;">
+    <p class="steps-label">⚡ たったの3ステップ</p>
+    <div class="mock-wrap">
+      <div class="mock-header">
+        <p class="mock-logo">tsunageru AI</p>
+        <p class="mock-time">🌙 23:14</p>
+      </div>
+
+      <!-- Step1 -->
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <p class="step-label">STEP 1 — 気持ちのまま入力</p>
+          <div class="step-bubble">「なんでいつも私だけ家事してるの？手伝ってよ」</div>
+        </div>
+      </div>
+
+      <div class="step-arrow">↓</div>
+      <p style="text-align:center; font-size:12px; color:#C5E8C0; margin-bottom:10px;">tsunageru AIが5秒で整えてくれる🌿</p>
+
+      <!-- Step2 -->
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <p class="step-ai-label">🌿 やわらか翻訳</p>
+          <div class="step-bubble result">「最近ちょっと余裕なくてさ。家のこと、一緒に考えてほしいな」</div>
+          <div class="step-insight">💡 "責め"より"お願い"の方が伝わりやすいよ🌿</div>
+          <p class="step-ai-label" style="margin-top:10px;">🫧 本音も残す翻訳</p>
+          <div class="step-bubble" style="background:rgba(255,255,255,0.08);">「私ばっかりって思うこと増えてきたから、話せる？」</div>
+        </div>
+      </div>
+
+      <div class="step-arrow">↓</div>
+
+      <!-- Step3 -->
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <p class="step-label">STEP 3 — 好きな方をコピーして送る</p>
+          <div class="step-copy-btn">📋 コピーして送る</div>
+        </div>
+      </div>
+    </div>
+    <p class="mock-note">※これはイメージ画面です。リリース後にご利用いただけます。</p>
+  </div>
+</section>
+
+<!-- Before/After -->
+<section class="section gray fade-in">
+  <p class="section-eyebrow">実際にどう変わるか</p>
+  <h2 class="h2">気持ちはそのままに、<br>届く言葉へ。</h2>
+
+  <div class="ba-wrap">
+    <p class="ba-label">before — 気持ちのまま</p>
+    <div class="ba-bubble">「なんでいつも私だけ家事してるの？手伝ってよ」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after — tsunageru AIで整えると</p>
+    <div class="ba-bubble after">「最近ちょっと余裕なくてさ。家のこと、一緒に考えてほしいな」</div>
+    <div class="ba-insight">💡 "責め"より"お願い"の方が伝わりやすいことが多いよ🌿</div>
+  </div>
+
+  <div class="ba-wrap">
+    <p class="ba-label">before — 気持ちのまま</p>
+    <div class="ba-bubble">「また返事してない。毎回こうじゃん、なんなの」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after — tsunageru AIで整えると</p>
+    <div class="ba-bubble after">「返事なくて少し寂しかった。忙しかった？」</div>
+    <div class="ba-insight">💡 「また」を外すだけで今日の話として届くよ🌿</div>
+  </div>
+
+  <div class="ba-wrap">
+    <p class="ba-label">before — 気持ちのまま</p>
+    <div class="ba-bubble">「ありがとうって一回も言ってくれないよね」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after — tsunageru AIで整えると</p>
+    <div class="ba-bubble after">「たまに感謝の言葉もらえると、すごく嬉しいんだけど」</div>
+    <div class="ba-insight">💡 「嬉しい」を伝えると動きやすくなるよ🌿</div>
+  </div>
+</section>
+
+<!-- 約束 -->
+<section class="section dark fade-in">
+  <p class="section-eyebrow">tunaguの約束</p>
+  <h2 class="h2">「夫を変える」<br>アプリじゃない。</h2>
+  <p class="body-text">
+    正論も、説教も、しません。<br>
+    ただ、あなたの言葉が「伝わる形」に<br>
+    なるように、静かに一緒にいます。
+  </p>
+  <div class="promise-grid">
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text">正論で責めない</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text">悪者にしない</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text">我慢を強いない</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-dot"></div>
+      <p class="promise-text">依存を作らない</p>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta-section">
+  <div class="cta-leaf">🌿</div>
+  <h2 class="cta-title">
+    もう一人で<br>
+    <em>抱え込まなくていい。</em>
+  </h2>
+  <p class="cta-body">
+    まず、無料小冊子を受け取ってください。<br>
+    5つのコツをすぐに試せます。
+  </p>
+  <div class="cta-gift-box">
+    <p class="cta-gift-title">🎁 無料プレゼント</p>
+    <p class="cta-gift-text">
+      「伝わらないLINEを<br>
+      伝わる言葉に変える5つのコツ」
+    </p>
+  </div>
+  <a href="https://lin.ee/xPtcPah" class="btn-line">
+    LINE登録して受け取る🎁
+  </a>
+  <p style="font-size:12px; color:rgba(255,255,255,0.5); margin-top:12px;">
+    スパムは送りません・いつでも解除できます
+  </p>
+</section>
+
+<div class="footer-brand">
+  <p class="footer-brand-name">tsunageru AI</p>
+  <p class="footer-tagline">伝わらない日々に、余白を。</p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
