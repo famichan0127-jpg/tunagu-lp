@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tunagu｜伝わるLINEに変える5つのコツ</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  background: #F5F8F2;
+  color: #3D3530;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ===== 表紙 ===== */
+.cover {
+  background: linear-gradient(160deg, #2D5040 0%, #4A7A55 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px 32px 40px;
+  position: relative;
+}
+
+.cover-tag {
+  position: absolute;
+  top: 48px;
+  left: 32px;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  padding: 7px 16px;
+  border-radius: 100px;
+}
+
+.cover-title {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 34px;
+  font-weight: 300;
+  color: white;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.cover-title em {
+  font-style: normal;
+  color: #C5E8C0;
+}
+
+.cover-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 2.0;
+  margin-bottom: 40px;
+}
+
+.cover-bottom {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.cover-list-title {
+  font-size: 12px;
+  color: #C5E8C0;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.cover-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cover-list li {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cover-list li::before {
+  content: '●';
+  color: #C5E8C0;
+  font-size: 8px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.cover-brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.cover-brand {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 22px;
+  color: white;
+  letter-spacing: 0.2em;
+  font-weight: 300;
+}
+
+.cover-tagline {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ===== セクション共通 ===== */
+.section {
+  background: white;
+  margin: 2px 0;
+  padding: 40px 28px;
+}
+
+.section.gray { background: #F8F5F0; }
+.section.green-light { background: #F0F8F2; }
+.section.dark {
+  background: linear-gradient(160deg, #2D5040 0%, #4A7A55 100%);
+  color: white;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #E8F0E9;
+  margin-bottom: 24px;
+}
+
+.section.dark .page-header {
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+
+.page-brand {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 14px;
+  color: #8FBA94;
+  letter-spacing: 0.15em;
+}
+
+.section.dark .page-brand { color: #C5E8C0; }
+
+.page-chapter {
+  font-size: 12px;
+  color: #C0B8B0;
+  letter-spacing: 0.1em;
+}
+
+.section.dark .page-chapter { color: rgba(255,255,255,0.5); }
+
+/* ===== テキスト ===== */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #8FBA94;
+  margin-bottom: 10px;
+}
+
+.section.dark .eyebrow { color: #C5E8C0; }
+
+.h2 {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: #2D3A28;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+.section.dark .h2 { color: white; }
+
+.body-text {
+  font-size: 16px;
+  color: #5A4E45;
+  line-height: 2.0;
+  margin-bottom: 16px;
+}
+
+.section.dark .body-text { color: rgba(255,255,255,0.8); }
+
+/* ===== ボックス ===== */
+.point-box {
+  background: #F0FAF2;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 16px 0;
+  border-left: 4px solid #8FBA94;
+}
+
+.point-text {
+  font-size: 15px;
+  color: #3D5040;
+  line-height: 2.0;
+}
+
+.highlight-box {
+  background: #2D5040;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+
+.highlight-title {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: #C5E8C0;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.highlight-text {
+  font-size: 15px;
+  color: rgba(255,255,255,0.82);
+  line-height: 2.0;
+}
+
+.quote {
+  border-left: 3px solid #A8C5AB;
+  padding: 14px 20px;
+  margin: 16px 0;
+  background: #F8FBF8;
+  border-radius: 0 10px 10px 0;
+}
+
+.quote-text {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #3D3530;
+  line-height: 1.9;
+  margin-bottom: 8px;
+}
+
+.quote-source {
+  font-size: 13px;
+  color: #A89D94;
+}
+
+/* ===== コツ ===== */
+.tip-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.tip-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4A7A55, #6AAA70);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tip-title {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: #2D3A28;
+  line-height: 1.5;
+}
+
+.tip-body {
+  font-size: 16px;
+  color: #5A4E45;
+  line-height: 2.0;
+  margin-bottom: 16px;
+}
+
+/* ===== Before/After ===== */
+.ba-wrap {
+  background: #F5F2EE;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 8px 0;
+}
+
+.ba-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #B0A8A0;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.ba-label.after { color: #5A9E6E; }
+
+.ba-bubble {
+  background: white;
+  border-radius: 4px 16px 16px 16px;
+  padding: 14px 18px;
+  font-size: 16px;
+  color: #3D3530;
+  line-height: 1.8;
+  border: 1px solid #E8E0D8;
+  display: inline-block;
+  width: 100%;
+}
+
+.ba-bubble.after {
+  border-color: rgba(90,158,110,0.3);
+  background: #F5FDF7;
+  border-radius: 16px 16px 16px 4px;
+}
+
+.ba-arrow {
+  text-align: center;
+  font-size: 20px;
+  color: #A8C5AB;
+  margin: 10px 0;
+}
+
+.ba-insight {
+  font-size: 14px;
+  color: #6AAA70;
+  background: #F0FAF2;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  line-height: 1.8;
+  border-left: 3px solid #7AC28A;
+}
+
+/* ===== 区切り ===== */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #E8F0E9;
+  margin: 20px 0;
+}
+
+/* ===== まとめリスト ===== */
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #E8F0E9;
+}
+
+.summary-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #8FBA94;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summary-text {
+  font-size: 16px;
+  color: #3D3530;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ===== アプリ機能 ===== */
+.app-feature {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid #E8F0E9;
+}
+
+.app-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #F0FAF2, #E0F5E5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.app-feature-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2D3A28;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.app-feature-body {
+  font-size: 14px;
+  color: #7A6E65;
+  line-height: 1.9;
+}
+
+/* ===== フロー ===== */
+.flow-step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.flow-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #4A7A55;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.flow-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #2D3A28;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.flow-body {
+  font-size: 15px;
+  color: #7A6E65;
+  line-height: 1.9;
+}
+
+.flow-connector {
+  width: 1px;
+  height: 12px;
+  background: #C8DCC8;
+  margin-left: 16px;
+  margin-bottom: 4px;
+}
+
+/* ===== FAQ ===== */
+.faq-item {
+  background: white;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 10px;
+  border: 1px solid #E8F0E9;
+}
+
+.faq-q {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4A7A55;
+  margin-bottom: 8px;
+  line-height: 1.6;
+  display: flex;
+  gap: 8px;
+}
+
+.faq-q::before {
+  content: 'Q.';
+  color: #8FBA94;
+  font-family: 'Hiragino Mincho ProN', serif;
+  flex-shrink: 0;
+}
+
+.faq-a {
+  font-size: 15px;
+  color: #5A4E45;
+  line-height: 1.9;
+  display: flex;
+  gap: 8px;
+}
+
+.faq-a::before {
+  content: 'A.';
+  color: #A89D94;
+  font-family: 'Hiragino Mincho ProN', serif;
+  flex-shrink: 0;
+}
+
+/* ===== CTA ===== */
+.cta-gift {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(122,158,126,0.25);
+}
+
+.cta-gift-icon { font-size: 32px; }
+
+.cta-gift-title {
+  font-size: 16px;
+  color: #4A7A55;
+  font-weight: 500;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.cta-gift-sub {
+  font-size: 13px;
+  color: #5A8A6A;
+  line-height: 1.6;
+}
+
+.cta-url-box {
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 18px 22px;
+  text-align: center;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.cta-url-text {
+  font-size: 17px;
+  color: white;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.cta-url-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+}
+
+.final-brand {
+  text-align: center;
+  padding: 24px;
+  background: #F0F8F2;
+}
+
+.final-brand-name {
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 24px;
+  color: #4A7A55;
+  letter-spacing: 0.2em;
+  font-weight: 300;
+}
+
+.final-tagline {
+  font-size: 13px;
+  color: #A89D94;
+  margin-top: 6px;
+}
+</style>
+</head>
+<body>
+
+<!-- 表紙 -->
+<div class="cover">
+  <div class="cover-tag">tsunageru 無料小冊子</div>
+  <h1 class="cover-title">
+    伝わらないLINEを<br>
+    <em>「伝わる言葉」</em>に<br>
+    変える5つのコツ
+  </h1>
+  <p class="cover-sub">
+    我慢しなくていい。正論も要らない。<br>
+    ただ、届く形に整えるだけ。
+  </p>
+  <div class="cover-bottom">
+    <p class="cover-list-title">この小冊子の内容</p>
+    <ul class="cover-list">
+      <li>なぜLINEが「伝わらない」のか？</li>
+      <li>伝わる言葉に変える5つのコツ</li>
+      <li>全コツにBefore / After付き</li>
+      <li>AIアプリ「tunagu」でできること</li>
+      <li>使った後、何がどう変わるのか</li>
+    </ul>
+    <div class="cover-brand-row">
+      <p class="cover-brand">tsunageru</p>
+      <p class="cover-tagline">伝わらない日々に、余白を。</p>
+    </div>
+  </div>
+</div>
+
+<!-- はじめに -->
+<div class="section">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">はじめに</span>
+  </div>
+  <p class="eyebrow">この小冊子を手に取ってくださったあなたへ</p>
+  <h2 class="h2">「伝えたいのに、伝わらない」<br>その悩みに、出口があります。</h2>
+  <p class="body-text">「なんで分かってくれないの？」と思いながら送ったLINEが、また噛み合わなかった。</p>
+  <p class="body-text">説明しているつもりなのに、責めていると受け取られてしまった。</p>
+  <p class="body-text">送る前に何度も書き直して、結局送れなかった夜がある。</p>
+  <p class="body-text">それはあなたの言い方が悪いのではありません。ただ、「届く形」になっていないだけです。</p>
+  <div class="point-box">
+    <p class="point-text">人は批判されると心を閉じます。でも「お願い」の形で伝えると、心が開きます。言葉のちょっとした違いが、相手の反応を大きく変えます。</p>
+  </div>
+</div>
+
+<!-- なぜ伝わらないのか -->
+<div class="section gray">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">第1章</span>
+  </div>
+  <p class="eyebrow">原因を知ると、解決策が見える</p>
+  <h2 class="h2">なぜLINEは<br>「伝わらない」のか？</h2>
+  <p class="body-text">夫婦のLINEがすれ違う最大の理由は、「言葉」ではなく「受け取り方」にあります。同じ内容でも、言い方ひとつで相手の心が開いたり閉じたりします。</p>
+  <div class="highlight-box">
+    <p class="highlight-title">人が心を閉じる3つのトリガー</p>
+    <p class="highlight-text">
+      ① 批判・非難・責め<br>
+      「またやってる」「なんで〜」「いつも〜」<br><br>
+      ② 詰問・問い詰め<br>
+      「どういうつもり？」「なんで返事しないの？」<br><br>
+      ③ 命令・強要<br>
+      「〜してよ」「ちゃんとやってよ」
+    </p>
+  </div>
+  <div class="quote">
+    <p class="quote-text">「人を動かす原則の第一は、批判も非難もしないことである」</p>
+    <p class="quote-source">— デール・カーネギー『人を動かす』</p>
+  </div>
+</div>
+
+<!-- コツ① -->
+<div class="section">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">コツ①</span>
+  </div>
+  <div class="tip-header">
+    <div class="tip-badge">1</div>
+    <p class="tip-title">「なんで」を<br>「私は」に変える</p>
+  </div>
+  <p class="tip-body">「なんで〜するの？」は詰問に聞こえます。相手は責められていると感じ、心を閉じます。「私は〜と感じている」に変えるだけで、防御反応がぐっと減ります。</p>
+  <div class="ba-wrap">
+    <p class="ba-label">before</p>
+    <div class="ba-bubble">「なんでいつも私だけ家事してるの？手伝ってよ」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after</p>
+    <div class="ba-bubble after">「最近ちょっと余裕なくてさ。家のこと、一緒に考えてほしいな」</div>
+    <div class="ba-insight">💡 「なんで」を消して「私は」から始めると、責める感じが自然と消えます🌿</div>
+  </div>
+</div>
+
+<!-- コツ② -->
+<div class="section gray">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">コツ②</span>
+  </div>
+  <div class="tip-header">
+    <div class="tip-badge">2</div>
+    <p class="tip-title">「また・毎回・いつも」<br>を外す</p>
+  </div>
+  <p class="tip-body">「また」「毎回」「いつも」は蓄積した感情を示す言葉です。受け取る側は「責め続けられている」と感じます。この言葉を外すだけで、今日の話として届きます。</p>
+  <div class="ba-wrap">
+    <p class="ba-label">before</p>
+    <div class="ba-bubble">「また返事してない。毎回こうじゃん、なんなの」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after</p>
+    <div class="ba-bubble after">「返事なくて少し寂しかった。忙しかった？」</div>
+    <div class="ba-insight">💡 削除ワード：また・毎回・いつも・ちゃんと・なんで・どうして・じゃん🌿</div>
+  </div>
+</div>
+
+<!-- コツ③ -->
+<div class="section">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">コツ③</span>
+  </div>
+  <div class="tip-header">
+    <div class="tip-badge">3</div>
+    <p class="tip-title">「お願い」で終わる</p>
+  </div>
+  <p class="tip-body">「〜してよ」という命令より、「〜してもらえる？」というお願いの方が、相手は動きやすくなります。自分で選んで動いた、という感覚を大切にすることがポイントです。</p>
+  <div class="ba-wrap">
+    <p class="ba-label">before</p>
+    <div class="ba-bubble">「子供のこと、ちゃんと考えてよ。いつも私任せじゃん」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after</p>
+    <div class="ba-bubble after">「子供のこと、一緒に話したいな。時間作れる？」</div>
+    <div class="ba-insight">💡 「〜できる？」「〜してもらえると嬉しい」で終わると相手が選べる余地が生まれます🌿</div>
+  </div>
+</div>
+
+<!-- コツ④ -->
+<div class="section gray">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">コツ④</span>
+  </div>
+  <div class="tip-header">
+    <div class="tip-badge">4</div>
+    <p class="tip-title">感情量を80%に抑える</p>
+  </div>
+  <p class="tip-body">100%の感情をそのまま送ると、相手は圧倒されて心を閉じます。少し抑えた80%の言葉の方が、不思議と相手には届きやすい。全部送らなくていいのです。</p>
+  <div class="ba-wrap">
+    <p class="ba-label">before</p>
+    <div class="ba-bubble">「もう無理。全部嫌だ。なんでこんな思いしてるの。毎日毎日…」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after</p>
+    <div class="ba-bubble after">「正直しんどくなってきた。少し話せる？」</div>
+    <div class="ba-insight">💡 一番伝えたいことだけで届きます。全部送らなくていい🌿</div>
+  </div>
+</div>
+
+<!-- コツ⑤ -->
+<div class="section">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">コツ⑤</span>
+  </div>
+  <div class="tip-header">
+    <div class="tip-badge">5</div>
+    <p class="tip-title">相手への理解を<br>一言入れる</p>
+  </div>
+  <p class="tip-body">「責めてるんじゃない」ということを一言で示すだけで、相手の防御反応が下がります。「忙しいのは分かってるけど」この一言が扉を開けます。</p>
+  <div class="ba-wrap">
+    <p class="ba-label">before</p>
+    <div class="ba-bubble">「週末くらい子供みてよ。私だって休みたいんだけど」</div>
+    <div class="ba-arrow">↓</div>
+    <p class="ba-label after">after</p>
+    <div class="ba-bubble after">「疲れてるの分かってるけど、少し休ませてもらえると助かるな」</div>
+    <div class="ba-insight">💡 理解を一言入れると「責めてない」が伝わり、届きやすくなります🌿</div>
+  </div>
+  <div class="divider"></div>
+  <div class="point-box">
+    <p class="point-text">🌙 深夜は感情量が高くなりがち。「今夜は送らない」も立派な選択です。</p>
+  </div>
+</div>
+
+<!-- まとめ -->
+<div class="section green-light">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">まとめ</span>
+  </div>
+  <p class="eyebrow">今日から使えるチェックリスト</p>
+  <h2 class="h2">5つのコツ、まとめ</h2>
+  <div class="summary-item"><div class="summary-num">1</div><p class="summary-text">「なんで」を「私は」に変える</p></div>
+  <div class="summary-item"><div class="summary-num">2</div><p class="summary-text">「また・毎回・いつも」を外す</p></div>
+  <div class="summary-item"><div class="summary-num">3</div><p class="summary-text">「お願い」で終わる</p></div>
+  <div class="summary-item"><div class="summary-num">4</div><p class="summary-text">感情量を80%に抑える</p></div>
+  <div class="summary-item"><div class="summary-num">5</div><p class="summary-text">相手への理解を一言入れる</p></div>
+  <div class="divider"></div>
+  <div class="point-box">
+    <p class="point-text">送る前に「削除ワードが入っていないか？」だけ確認する習慣をつけるだけで、だいぶ変わります。完璧じゃなくていい。少しずつで大丈夫です🌿</p>
+  </div>
+</div>
+
+<!-- ベネフィット＋画面イメージ -->
+<div class="section">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">AI翻訳</span>
+  </div>
+  <p class="eyebrow">たった数秒で変わる</p>
+  <h2 class="h2">イライラLINEが<br>一瞬で<span style="color:#4A7A55;">届く言葉</span>に。</h2>
+  <p class="body-text">送りたい気持ちをそのまま入力するだけ。AIが5つのコツを自動で適用して、相手の心が開く言葉に変えてくれます。</p>
+
+  <!-- ベネフィット3つ -->
+  <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:28px;">
+    <div style="display:flex; align-items:center; gap:14px; background:#F0F8F2; border-radius:12px; padding:14px 18px;">
+      <div style="width:40px; height:40px; border-radius:50%; background:#4A7A55; color:white; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">⚡</div>
+      <div>
+        <p style="font-size:16px; font-weight:500; color:#2D3A28; margin-bottom:2px;">5秒で翻訳完了</p>
+        <p style="font-size:13px; color:#7A6E65; line-height:1.7;">感情的になる前に、すぐ整えられる</p>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:14px; background:#F0F8F2; border-radius:12px; padding:14px 18px;">
+      <div style="width:40px; height:40px; border-radius:50%; background:#4A7A55; color:white; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">💬</div>
+      <div>
+        <p style="font-size:16px; font-weight:500; color:#2D3A28; margin-bottom:2px;">2パターン提案</p>
+        <p style="font-size:13px; color:#7A6E65; line-height:1.7;">やわらか版と本音版、好きな方を選べる</p>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:14px; background:#F0F8F2; border-radius:12px; padding:14px 18px;">
+      <div style="width:40px; height:40px; border-radius:50%; background:#4A7A55; color:white; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;">🌿</div>
+      <div>
+        <p style="font-size:16px; font-weight:500; color:#2D3A28; margin-bottom:2px;">AI臭ゼロ</p>
+        <p style="font-size:13px; color:#7A6E65; line-height:1.7;">LINEらしい自然な文体で届く</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 画面モックUI -->
+  <p style="font-size:12px; color:#A89D94; text-align:center; margin-bottom:12px; letter-spacing:0.1em;">APP PREVIEW</p>
+  <div style="background:#0F1829; border-radius:24px; padding:24px 20px; position:relative;">
+
+    <!-- ヘッダー -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <p style="font-family:serif; font-size:18px; color:#C5E8C0; letter-spacing:0.15em;">tunagu</p>
+      <p style="font-size:12px; color:#5A6A7A;">🌙 23:14</p>
+    </div>
+
+    <!-- 入力エリア -->
+    <div style="background:#1A2545; border-radius:14px; padding:14px 16px; margin-bottom:10px;">
+      <p style="font-size:11px; color:#5A6A7A; margin-bottom:8px; letter-spacing:0.1em;">送りたい気持ち</p>
+      <p style="font-size:14px; color:#C8D0E0; line-height:1.8;">なんでいつも私だけ家事してるの？手伝ってよ</p>
+    </div>
+
+    <div style="text-align:center; color:#6AAA70; font-size:20px; margin:8px 0;">↓</div>
+    <p style="text-align:center; font-size:12px; color:#6B8F6B; margin-bottom:10px;">tsunageru AIが整えてみるね🌿</p>
+
+    <!-- 翻訳結果① -->
+    <div style="background:#1A2545; border-radius:14px; padding:14px 16px; margin-bottom:8px; border:1px solid rgba(107,143,107,0.3);">
+      <p style="font-size:11px; color:#6B8F6B; margin-bottom:8px; letter-spacing:0.1em;">🌿 やわらか翻訳</p>
+      <p style="font-size:14px; color:#D8E0EC; line-height:1.8;">最近ちょっと余裕なくてさ<br>家のこと一緒に考えてほしいな</p>
+      <div style="margin-top:10px; background:rgba(107,143,107,0.15); border-radius:8px; padding:8px 12px;">
+        <p style="font-size:12px; color:#8FBF8F; line-height:1.7;">💡 "責め"より"お願い"の方が<br>伝わりやすいことが多いよ🌿</p>
+      </div>
+    </div>
+
+    <!-- 翻訳結果② -->
+    <div style="background:#1A2545; border-radius:14px; padding:14px 16px; border:1px solid rgba(107,143,107,0.15);">
+      <p style="font-size:11px; color:#5A6A7A; margin-bottom:8px; letter-spacing:0.1em;">🫧 本音も残す翻訳</p>
+      <p style="font-size:14px; color:#D8E0EC; line-height:1.8;">私ばっかりって思うこと<br>増えてきたから話せる？</p>
+    </div>
+
+    <!-- コピーボタン -->
+    <div style="margin-top:14px; background:#2C3E6B; border-radius:100px; padding:12px; text-align:center;">
+      <p style="font-size:14px; color:white; letter-spacing:0.05em;">📋 コピーして送る</p>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:#A89D94; text-align:center; margin-top:12px; line-height:1.8;">
+    ※これはイメージ画面です。<br>実際のアプリはリリース後にご利用いただけます。
+  </p>
+</div>
+
+<!-- tsunageruでできること -->
+<div class="section">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">tsunageruとは</span>
+  </div>
+  <p class="eyebrow">この5つのコツをAIが自動でやってくれる</p>
+  <h2 class="h2">tsunageruでできること</h2>
+  <div class="app-feature">
+    <div class="app-icon">📩</div>
+    <div>
+      <p class="app-feature-title">LINE文章の翻訳・整え</p>
+      <p class="app-feature-body">送りたい言葉を入力するだけ。5つのコツを自動で適用して、届く形に整えてくれます。</p>
+    </div>
+  </div>
+  <div class="app-feature">
+    <div class="app-icon">📸</div>
+    <div>
+      <p class="app-feature-title">スクショ解析→返信提案</p>
+      <p class="app-feature-body">相手のLINEのスクショを貼るだけで、次に送る返信を提案します。</p>
+    </div>
+  </div>
+  <div class="app-feature">
+    <div class="app-icon">🫧</div>
+    <div>
+      <p class="app-feature-title">感情整理チャット</p>
+      <p class="app-feature-body">正論も説教もせず、ただ聞いてくれるAIと話せます。深夜でもそばにいます。</p>
+    </div>
+  </div>
+  <div class="highlight-box">
+    <p class="highlight-title">tsunageruの大切にしていること</p>
+    <p class="highlight-text">正論で責めない・相手を悪者にしない<br>我慢だけを強いない・依存を作らない</p>
+  </div>
+</div>
+
+<!-- 使うとどう変わるか -->
+<div class="section gray">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">使うとどう変わるか</span>
+  </div>
+  <p class="eyebrow">tsunageruを使い始めると</p>
+  <h2 class="h2">何が、どう変わるのか</h2>
+  <div class="flow-step">
+    <div class="flow-num">1</div>
+    <div>
+      <p class="flow-title">送信前の緊張が減る</p>
+      <p class="flow-body">「また喧嘩になるかな」という不安が、少し軽くなります。</p>
+    </div>
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <div class="flow-num">2</div>
+    <div>
+      <p class="flow-title">感情的に送ることが減る</p>
+      <p class="flow-body">「整えてから送る」という一手間が、後悔を防ぎます。</p>
+    </div>
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <div class="flow-num">3</div>
+    <div>
+      <p class="flow-title">相手の返信が変わってくる</p>
+      <p class="flow-body">届く言葉で送ると、相手の防御反応が減り、会話になりやすくなります。</p>
+    </div>
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <div class="flow-num">4</div>
+    <div>
+      <p class="flow-title">一人で抱え込む夜が減る</p>
+      <p class="flow-body">深夜に話せる場所があるだけで、孤独感が和らぎます。</p>
+    </div>
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <div class="flow-num">5</div>
+    <div>
+      <p class="flow-title">自分を責めることが減る</p>
+      <p class="flow-body">「また感情的になった」という自己嫌悪のループから、少しずつ抜け出せます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">よくある質問</span>
+  </div>
+  <h2 class="h2">気になること、正直に答えます</h2>
+  <div class="faq-item">
+    <p class="faq-q">夫には内緒で使えますか？</p>
+    <p class="faq-a">はい。アプリ名も一見ではコミュニケーションアプリとは分かりにくい設計にしています。</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">会話の内容は誰かに見られますか？</p>
+    <p class="faq-a">いいえ。入力した内容は暗号化して保存されます。スクショは72時間で自動削除されます。</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">AIに依存してしまいそうで怖いです。</p>
+    <p class="faq-a">tsunageruはAI依存を作らない設計を大切にしています。「最後はあなたが決めていい」という姿勢で、主体性を尊重します。</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">料金はいくらですか？</p>
+    <p class="faq-a">無料プランあり。有料は月500円〜を予定。登録者にはリリース時に最速でお知らせします。</p>
+  </div>
+</div>
+
+<!-- 最終CTA -->
+<div class="section dark">
+  <div class="page-header">
+    <span class="page-brand">tunagu</span>
+    <span class="page-chapter">リリース通知</span>
+  </div>
+  <p style="font-size:40px; margin-bottom:20px;">🌿</p>
+  <h2 class="h2">もう一人で<br>抱え込まなくていい。</h2>
+  <p class="body-text">この5つのコツを、AIが自動でやってくれるアプリ「tsunageru」を開発中です。あなたの言葉を入力するだけで、届く言葉に整えてくれます。</p>
+  <div class="divider" style="border-color: rgba(255,255,255,0.15); background:rgba(255,255,255,0.15);"></div>
+
+  <div style="background:rgba(255,255,255,0.1); border-radius:14px; padding:18px 22px; margin-bottom:14px; border:1px solid rgba(255,255,255,0.15);">
+    <p style="font-size:13px; color:#C5E8C0; letter-spacing:0.1em; margin-bottom:8px;">📋 アンケートにご協力ください</p>
+    <p style="font-size:16px; color:white; line-height:1.8; margin-bottom:12px;">あなたの悩みをアプリの機能に直接反映させてください。3分で終わります🌿</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbnVhmXGtCd7adXmIsFJ3SnV0xDg4GvBanpx-yAZV8xyYB3g/viewform?usp=dialog"
+       style="display:block; background:#8FBA94; color:white; text-align:center; padding:14px 20px; border-radius:100px; font-size:15px; text-decoration:none; letter-spacing:0.05em;">
+      アンケートに答える →
+    </a>
+  </div>
+
+  <div style="background:rgba(255,255,255,0.1); border-radius:14px; padding:18px 22px; border:1px solid rgba(255,255,255,0.15);">
+    <p style="font-size:13px; color:#C5E8C0; letter-spacing:0.1em; margin-bottom:8px;">📲 リリース時に最速でお知らせ</p>
+    <a href="https://lin.ee/xPtcPah"
+       style="display:block; background:white; color:#4A7A55; text-align:center; padding:14px 20px; border-radius:100px; font-size:15px; text-decoration:none; letter-spacing:0.05em; font-weight:500;">
+      LINE登録はこちら →
+    </a>
+  </div>
+</div>
+
+<!-- フッター -->
+<div class="final-brand">
+  <p class="final-brand-name">tsunageru</p>
+  <p class="final-tagline">伝わらない日々に、余白を。</p>
+</div>
+
+</body>
+</html>
